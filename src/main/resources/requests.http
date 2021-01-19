@@ -1,0 +1,22 @@
+
+###
+GET http://localhost:8080/article/
+
+###
+POST http://localhost:8080/article/create
+Content-Type: application/json
+
+{"name": "article 1"}
+
+### Перед запуском скопировать идентификатор из результата метода Create или Get
+GET http://localhost:8080/article/get?id=537fb7ee-b700-436c-87a4-0897f58c99a5
+
+### Перед запуском скопировать идентификатор из результата метода Create или Get
+PUT http://localhost:8080/article/update
+Content-Type: application/json
+
+{"id": "537fb7ee-b700-436c-87a4-0897f58c99a5",
+  "name": "article 1 _ updated"}
+
+### Перед запуском скопировать идентификатор из результата метода Create или Get
+DELETE http://localhost:8080/article/delete?id=537fb7ee-b700-436c-87a4-0897f58c99a5

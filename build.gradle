@@ -1,0 +1,91 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.6.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.2'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'net.ltgt.apt' version '0.9'
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.junit.platform.gradle.plugin'
+
+group 'tech.stratery.journal'
+version '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    lombokVersion = '1.18.2'
+    mapstructVersion = '1.4.0.Final'
+    springBootVersion = '2.0.6.RELEASE'
+    springMVCVersion = '5.1.1.RELEASE'
+}
+
+// MapStruct generated sources
+idea {
+    module {
+        sourceDirs += file("out/production/classes/generated")
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+dependencies {
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    compileOnly "org.mapstruct:mapstruct:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}"
+
+    // Logging
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+    compile 'ch.qos.logback:logback-core:1.2.3'
+    compile 'net.logstash.logback:logstash-logback-encoder:5.2'
+
+    // Spring Framework
+    // Boot
+    compile 'org.springframework.boot:spring-boot-starter'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    //MVC
+    compile 'org.springframework:spring-webmvc'
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    //Mapstruct
+    compile("org.mapstruct:mapstruct-jdk8:${mapstructVersion}")
+
+    // Postgres
+    compile 'org.postgresql:postgresql:42.2.5'
+    runtimeOnly 'com.h2database:h2'
+
+    // Jackson
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.7'
+
+    // Tests
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.3.1'
+    testCompile('org.junit.jupiter:junit-jupiter-params:5.3.1')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.3.1')
+}

@@ -1,0 +1,19 @@
+spring:
+  jpa:
+    open-in-view: true
+    database: H2
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+datasources:
+  base:
+    url: jdbc:h2:mem:journal;
+    driverClassName: org.h2.Driver
+    username: sa
+    password: sa
+    catalog: DB
