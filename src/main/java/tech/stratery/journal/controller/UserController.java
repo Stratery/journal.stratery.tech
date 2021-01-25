@@ -8,6 +8,7 @@ import tech.stratery.journal.controller.dataobject.UserDTO;
 import tech.stratery.journal.controller.mapping.UserToDTOMappingWrapper;
 import tech.stratery.journal.data.entity.UserEntity;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @RestController
@@ -20,13 +21,13 @@ public class UserController extends CRUDController<User, UserEntity, UserDTO, UU
 
     @Override
     @PostMapping("create")
-    public UserDTO create(UserDTO dto) {
+    public UserDTO create(@Valid @RequestBody UserDTO dto) {
         return super.create(dto);
     }
 
     @Override
     @GetMapping("get")
-    public UserDTO get(UUID uuid) {
+    public UserDTO get(@RequestParam(name = "id") UUID uuid) {
         return super.get(uuid);
     }
 
@@ -38,13 +39,13 @@ public class UserController extends CRUDController<User, UserEntity, UserDTO, UU
 
     @Override
     @PutMapping("update")
-    public UserDTO update(UserDTO dto) {
+    public UserDTO update(@Valid @RequestBody UserDTO dto) {
         return super.update(dto);
     }
 
     @Override
     @DeleteMapping ("delete")
-    public void delete(UUID uuid) {
+    public void delete(@RequestParam(name = "id") UUID uuid) {
         super.delete(uuid);
     }
 }
