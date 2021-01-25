@@ -11,7 +11,7 @@ import tech.stratery.framework.core.mapping.DomainModelMappingWrapper;
 public class ArticleToDTOMappingWrapper extends DomainModelMappingWrapper<Article, ArticleDTO> {
 
     @Autowired
-    public ArticleToDTOMappingWrapper(DomainModelMapper<Article, ArticleDTO> mapper) {
+    public ArticleToDTOMappingWrapper(ArticleToDTOMapper mapper) {
         super(mapper);
     }
 }
