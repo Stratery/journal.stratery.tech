@@ -6,19 +6,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import tech.stratery.journal.business.domain.Article;
 import tech.stratery.journal.business.service.ArticleDomainService;
 import tech.stratery.journal.controller.ArticleController;
-import tech.stratery.journal.controller.dataobject.ArticleDTO;
 import tech.stratery.journal.controller.mapping.ArticleToDTOMapper;
 import tech.stratery.journal.controller.mapping.ArticleToDTOMappingWrapper;
-import tech.stratery.journal.data.entity.ArticleEntity;
+import tech.stratery.journal.controller.mapping.TopicToDTOMapper;
 import tech.stratery.journal.data.repository.ArticleRepository;
 import tech.stratery.journal.data.service.ArticleDataService;
-import tech.stratery.journal.data.service.mapping.ArticleToEntityMapper;
-import tech.stratery.journal.data.service.mapping.ArticleToEntityMapperImpl;
-import tech.stratery.journal.data.service.mapping.ArticleToEntityMappingWrapper;
-import tech.stratery.framework.core.mapping.DomainModelMapper;
+import tech.stratery.journal.data.service.mapping.*;
 
 @Configuration
 @EntityScan("tech.stratery.journal.data.entity")
@@ -27,12 +22,7 @@ import tech.stratery.framework.core.mapping.DomainModelMapper;
 public class BusinessConfiguration {
 
     @Bean
-    public DomainModelMapper<Article, ArticleEntity> domainEntityMapper() {
-        return Mappers.getMapper(ArticleToEntityMapper.class);
-    }
-
-    @Bean
-    public DomainModelMapper<Article, ArticleDTO> domainDTOMapper() {
+    public ArticleToDTOMapper articleDTOMapper() {
         return Mappers.getMapper(ArticleToDTOMapper.class);
     }
 
@@ -50,6 +40,16 @@ public class BusinessConfiguration {
     @Bean
     public ArticleDataService articleDataService(ArticleRepository repository, ArticleToEntityMappingWrapper mapper) {
         return new ArticleDataService(repository, mapper);
+    }
+
+    @Bean
+    public TopicToDTOMapper topicDTOMapper() {
+        return Mappers.getMapper(TopicToDTOMapper.class);
+    }
+
+    @Bean
+    public TopicToEntityMapper topicToEntityMapper() {
+        return new TopicToEntityMapperImpl();
     }
 
 }

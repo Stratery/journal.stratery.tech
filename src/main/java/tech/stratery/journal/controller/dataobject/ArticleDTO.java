@@ -6,7 +6,9 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import tech.stratery.journal.business.domain.Article;
 import tech.stratery.framework.core.controller.DataTransferObject;
+import tech.stratery.journal.business.domain.Topic;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -16,4 +18,7 @@ public class ArticleDTO extends DataTransferObject<Article, UUID> {
 
     //Наименование
     private String name;
+
+    //Топики
+    private Set<Topic> topics;
 }
