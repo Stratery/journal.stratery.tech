@@ -8,10 +8,7 @@ import tech.stratery.framework.core.data.jpa.DomainJPAEntity;
 import tech.stratery.journal.business.domain.Article;
 import tech.stratery.journal.business.domain.Topic;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Set;
 import java.util.UUID;
 
@@ -30,6 +27,6 @@ public class TopicEntity extends DomainJPAEntity<Topic, UUID> {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "topics")
+    @ManyToMany(targetEntity = ArticleEntity.class,fetch = FetchType.LAZY,mappedBy = "topics")
     private Set<ArticleEntity> articles;
 }

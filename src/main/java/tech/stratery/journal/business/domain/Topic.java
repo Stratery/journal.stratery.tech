@@ -10,5 +10,7 @@ public class Topic extends DomainObject<UUID> {
 
     private String name;
     private String description;
+    private Article article;
+
 
 }

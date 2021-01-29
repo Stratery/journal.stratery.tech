@@ -23,7 +23,7 @@ public class ArticleEntity extends DomainJPAEntity<Article, UUID> {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = TopicEntity.class, fetch = FetchType.LAZY)
     @JoinTable(
             name = "ARTICLE_TOPIC",
             joinColumns = @JoinColumn (name = "article_id"),
