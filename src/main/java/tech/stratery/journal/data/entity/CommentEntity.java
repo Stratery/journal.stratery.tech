@@ -26,7 +26,7 @@ public class CommentEntity extends DomainJPAEntity<Comment, UUID> {
     @ManyToOne(targetEntity = ArticleEntity.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "article_id", referencedColumnName = "id")
     @OnDelete(action = OnDeleteAction.CASCADE) //при удалении статьи комментарии не нужны
-    private ArticleEntity articleEntity;
+    private ArticleEntity article;
 
     @Column(name = "text")
     private String text;

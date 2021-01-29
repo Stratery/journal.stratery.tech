@@ -6,9 +6,8 @@ import lombok.NoArgsConstructor;
 import tech.stratery.framework.core.data.jpa.DomainJPAEntity;
 import tech.stratery.journal.business.domain.User;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -27,4 +26,7 @@ public class UserEntity extends DomainJPAEntity<User, UUID> {
     private String name;
     @Column(name = "email")
     private String email;
+
+    @OneToMany(targetEntity = ArticleEntity.class, fetch = FetchType.LAZY, mappedBy = "author")
+    private Set<ArticleEntity> articles;
 }
