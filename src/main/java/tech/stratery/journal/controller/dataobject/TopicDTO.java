@@ -8,6 +8,7 @@ import tech.stratery.framework.core.controller.DataTransferObject;
 import tech.stratery.journal.business.domain.Article;
 import tech.stratery.journal.business.domain.Topic;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -20,4 +21,7 @@ public class TopicDTO extends DataTransferObject<Topic, UUID> {
 
     //Описание
     private String description;
+
+    // Статьи
+    private Set<Article> articles;
 }
