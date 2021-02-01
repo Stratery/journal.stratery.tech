@@ -2,6 +2,7 @@ package tech.stratery.journal.data.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -16,6 +17,7 @@ import java.util.UUID;
 @Table(name = "COMMENTS")
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class CommentEntity extends DomainJPAEntity<Comment, UUID> {
 
     @ManyToOne(targetEntity = UserEntity.class, fetch = FetchType.LAZY)
@@ -23,7 +25,7 @@ public class CommentEntity extends DomainJPAEntity<Comment, UUID> {
     @OnDelete(action = OnDeleteAction.NO_ACTION) //при удалении пользователя оставляем комментарии
     private UserEntity author;
 
-    @ManyToOne(targetEntity = ArticleEntity.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = ArticleEntity.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "article_id", referencedColumnName = "id")
     @OnDelete(action = OnDeleteAction.CASCADE) //при удалении статьи комментарии не нужны
     private ArticleEntity article;
