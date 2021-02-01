@@ -10,6 +10,7 @@ import tech.stratery.journal.data.entity.ArticleEntity;
 import tech.stratery.framework.core.controller.CRUDController;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -49,5 +50,10 @@ public class ArticleController extends CRUDController<Article, ArticleEntity, Ar
     @DeleteMapping("delete")
     public void delete(@RequestParam(name = "id") UUID uuid) {
         super.delete(uuid);
+    }
+
+    @GetMapping("popular")
+    public List<ArticleDTO> getSortedByComments(){
+        return mapping.forward(((ArticleDomainService) service).getArticleEntityByComments());
     }
 }

@@ -16,8 +16,8 @@ public abstract class DomainDataService <
         ID extends Serializable>
         implements DataService<Domain,ID> {
 
-    private final DomainRepository<Entity, ID> repository;
-    private final DomainModelMappingWrapper<Domain, Entity> mapping;
+    protected final DomainRepository<Entity, ID> repository;
+    protected final DomainModelMappingWrapper<Domain, Entity> mapping;
 
     protected DomainDataService(DomainRepository<Entity, ID> repository, DomainModelMappingWrapper<Domain, Entity> mapping) {
         this.repository = repository;

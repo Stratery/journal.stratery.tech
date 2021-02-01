@@ -16,10 +16,10 @@ import java.util.UUID;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CommentDTO extends DataTransferObject<Comment, UUID> {
     // статья
-    private ArticleDTO article;
+    private UUID articleId;
 
     // автор комментария
-    private UserDTO author;
+    private UUID authorId;
 
     // текст комментария
     private String text;

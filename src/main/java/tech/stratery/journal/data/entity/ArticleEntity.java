@@ -22,9 +22,9 @@ public class ArticleEntity extends DomainJPAEntity<Article, UUID> {
 
     @Column(name = "name")
     private String name;
-
-    @OneToMany(targetEntity = CommentEntity.class, fetch = FetchType.LAZY, mappedBy = "article")
-    private Set<CommentEntity> comments;
+    // почему то не работает с обратной связкой
+//    @OneToMany(targetEntity = CommentEntity.class, fetch = FetchType.LAZY, mappedBy = "article")
+//    private Set<CommentEntity> comments;
 
     @ManyToOne(targetEntity = UserEntity.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", referencedColumnName = "id")
