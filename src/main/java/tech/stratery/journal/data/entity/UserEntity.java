@@ -2,6 +2,7 @@ package tech.stratery.journal.data.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import tech.stratery.framework.core.data.jpa.DomainJPAEntity;
 import tech.stratery.journal.business.domain.User;
@@ -15,6 +16,7 @@ import java.util.UUID;
 @Table(name = "USER")
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class UserEntity extends DomainJPAEntity<User, UUID> {
     @Column(name = "login")
     private String login;
