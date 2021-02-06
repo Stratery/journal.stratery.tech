@@ -6,6 +6,7 @@ import tech.stratery.journal.data.entity.ArticleEntity;
 import tech.stratery.framework.core.logic.DomainService;
 import tech.stratery.journal.data.service.ArticleDataService;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -14,4 +15,5 @@ public class ArticleDomainService extends DomainService<Article, ArticleEntity, 
     public ArticleDomainService(ArticleDataService dataService) {
         super(dataService);
     }
+    
 }
