@@ -18,4 +18,11 @@ public class ArticleEntity extends DomainJPAEntity<Article, UUID> {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "blog")
+    private UUID blog;
+
+    @ManyToOne(targetEntity = TopicFlowEntity.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "blog_id", referencedColumnName = "id")
+    private TopicFlowEntity topic;
 }
