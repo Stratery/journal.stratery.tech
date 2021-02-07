@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import tech.stratery.journal.business.service.ArticleDomainService;
 import tech.stratery.journal.controller.ArticleController;
 import tech.stratery.journal.controller.mapping.ArticleToDTOMapper;
@@ -18,7 +17,6 @@ import tech.stratery.journal.data.service.mapping.*;
 @Configuration
 @EntityScan("tech.stratery.journal.data.entity")
 @EnableJpaRepositories("tech.stratery.journal.data.repository")
-@EnableWebMvc
 public class BusinessConfiguration {
 
     @Bean

@@ -3,6 +3,7 @@ package tech.stratery.framework.core.data.jpa;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import tech.stratery.framework.core.domain.DomainObject;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ public abstract class DomainJPAEntity<DObject extends DomainObject<ID>, ID exten
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
+    @Type(type="uuid-char")
     @Column(name = "id", updatable = false, unique=true, nullable = false)
     @GeneratedValue(generator = "UUID", strategy = GenerationType.IDENTITY)
     private ID id;

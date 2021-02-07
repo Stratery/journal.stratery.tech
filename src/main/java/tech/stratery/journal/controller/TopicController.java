@@ -2,22 +2,17 @@ package tech.stratery.journal.controller;
 
 import org.springframework.web.bind.annotation.*;
 import tech.stratery.framework.core.controller.CRUDController;
-import tech.stratery.journal.business.domain.Article;
 import tech.stratery.journal.business.domain.Topic;
-import tech.stratery.journal.business.service.ArticleDomainService;
 import tech.stratery.journal.business.service.TopicDomainService;
-import tech.stratery.journal.controller.dataobject.ArticleDTO;
 import tech.stratery.journal.controller.dataobject.TopicDTO;
-import tech.stratery.journal.controller.mapping.ArticleToDTOMappingWrapper;
 import tech.stratery.journal.controller.mapping.TopicToDTOMappingWrapper;
-import tech.stratery.journal.data.entity.ArticleEntity;
 import tech.stratery.journal.data.entity.TopicEntity;
 
 import javax.validation.Valid;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/topic")
+@RequestMapping("/crud/topic")
 public class TopicController extends CRUDController<Topic, TopicEntity, TopicDTO, UUID> {
 
     public TopicController(TopicDomainService service, TopicToDTOMappingWrapper mapping) {

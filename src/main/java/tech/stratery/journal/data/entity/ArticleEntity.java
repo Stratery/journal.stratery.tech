@@ -4,9 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import tech.stratery.journal.business.domain.Article;
 import tech.stratery.framework.core.data.jpa.DomainJPAEntity;
-import tech.stratery.journal.business.domain.Topic;
+import tech.stratery.journal.business.domain.Article;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -22,6 +21,12 @@ public class ArticleEntity extends DomainJPAEntity<Article, UUID> {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "description", columnDefinition = "LONGTEXT")
+    private String description;
+
+    @Column(name = "text", columnDefinition = "LONGTEXT")
+    private String text;
 
     @ManyToMany(targetEntity = TopicEntity.class, fetch = FetchType.LAZY)
     @JoinTable(
