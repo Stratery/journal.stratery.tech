@@ -1,0 +1,16 @@
+spring:
+  jpa:
+    open-in-view: true
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate.temp.use_jdbc_metadata_defaults: false
+datasources:
+  base:
+    url: jdbc:postgresql://localhost:5432/blogdb
+    driverClassName: org.postgresql.Driver
+    username: stc31
+    password: stc31
+    platform: postgres
