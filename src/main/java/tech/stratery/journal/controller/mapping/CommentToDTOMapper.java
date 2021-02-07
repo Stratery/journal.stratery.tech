@@ -11,12 +11,14 @@ import tech.stratery.journal.controller.dataobject.CommentDTO;
 @Mapper
 public interface CommentToDTOMapper extends DomainModelMapper<Comment, CommentDTO> {
 
+    @Override
     @Mappings({
             @Mapping(target="articleId", source = "comment.article.id"),
             @Mapping(target="authorId", source = "comment.author.id")
     })
     CommentDTO forward(Comment comment, CyclicGraphContext context);
 
+    @Override
     @Mappings({
             @Mapping(source = "commentDTO.articleId", target = "article.id"),
             @Mapping(source = "commentDTO.authorId", target = "author.id")

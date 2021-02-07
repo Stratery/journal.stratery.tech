@@ -58,8 +58,8 @@ public class BusinessConfiguration {
     }
 
     @Bean
-    public UserController userController(UserDomainService service, UserToDTOMappingWrapper mapper) {
-        return new UserController(service, mapper);
+    public UserController userController(UserDomainService service, UserToDTOMappingWrapper mapper, ArticleToDTOMappingWrapper articleMapper) {
+        return new UserController(service, mapper, articleMapper);
     }
 
     @Bean
@@ -68,8 +68,11 @@ public class BusinessConfiguration {
     }
 
     @Bean
-    public UserDataService userDataService(UserRepository repository, UserToEntityMappingWrapper mapper) {
-        return new UserDataService(repository, mapper);
+    public UserDataService userDataService(UserRepository repository,
+                                           UserToEntityMappingWrapper mapper,
+                                           ArticleRepository articleRepository,
+                                           ArticleToEntityMappingWrapper articleMapping) {
+        return new UserDataService(repository, mapper, articleRepository, articleMapping);
     }
 
     @Bean

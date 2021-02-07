@@ -16,4 +16,7 @@ public class ArticleDTO extends DataTransferObject<Article, UUID> {
 
     //Наименование
     private String name;
+
+    // ID Автора
+    private UUID authorId;
 }

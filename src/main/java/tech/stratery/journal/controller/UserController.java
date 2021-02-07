@@ -1,22 +1,28 @@
 package tech.stratery.journal.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tech.stratery.framework.core.controller.CRUDController;
 import tech.stratery.journal.business.domain.User;
 import tech.stratery.journal.business.service.UserDomainService;
+import tech.stratery.journal.controller.dataobject.ArticleDTO;
 import tech.stratery.journal.controller.dataobject.UserDTO;
+import tech.stratery.journal.controller.mapping.ArticleToDTOMappingWrapper;
 import tech.stratery.journal.controller.mapping.UserToDTOMappingWrapper;
 import tech.stratery.journal.data.entity.UserEntity;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("user")
 public class UserController extends CRUDController<User, UserEntity, UserDTO, UUID> {
+    private ArticleToDTOMappingWrapper articleMapper;
 
-    public UserController(UserDomainService service, UserToDTOMappingWrapper mapping) {
+    public UserController(UserDomainService service, UserToDTOMappingWrapper mapping, ArticleToDTOMappingWrapper articleMapper) {
         super(service, mapping);
+        this.articleMapper = articleMapper;
     }
 
     @Override
@@ -47,5 +53,10 @@ public class UserController extends CRUDController<User, UserEntity, UserDTO, UU
     @DeleteMapping ("delete")
     public void delete(@RequestParam(name = "id") UUID uuid) {
         super.delete(uuid);
+    }
+
+    @GetMapping("popular")
+    public List<ArticleDTO> getPopularArticles(@RequestParam(name = "userId") UUID userId){
+        return articleMapper.forward(((UserDomainService) service).getPopularArticles(userId));
     }
 }
