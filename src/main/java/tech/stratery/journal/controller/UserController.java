@@ -1,6 +1,7 @@
 package tech.stratery.journal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import tech.stratery.framework.core.controller.CRUDController;
 import tech.stratery.journal.business.domain.User;
@@ -57,6 +58,10 @@ public class UserController extends CRUDController<User, UserEntity, UserDTO, UU
 
     @GetMapping("popular")
     public List<ArticleDTO> getPopularArticles(@RequestParam(name = "userId") UUID userId){
+        return getPopularArticlesList(userId);
+    }
+
+    private List<ArticleDTO> getPopularArticlesList(UUID userId) {
         return articleMapper.forward(((UserDomainService) service).getPopularArticles(userId));
     }
 }

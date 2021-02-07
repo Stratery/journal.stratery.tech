@@ -13,6 +13,7 @@ import tech.stratery.journal.business.service.UserDomainService;
 import tech.stratery.journal.controller.ArticleController;
 import tech.stratery.journal.controller.CommentController;
 import tech.stratery.journal.controller.UserController;
+import tech.stratery.journal.controller.UserWebController;
 import tech.stratery.journal.controller.dataobject.ArticleDTO;
 import tech.stratery.journal.controller.mapping.*;
 import tech.stratery.journal.data.entity.ArticleEntity;
@@ -93,5 +94,10 @@ public class BusinessConfiguration {
     @Bean
     public CommentDataService commentDataService(CommentRepository repository, CommentToEntityMappingWrapper wrapper) {
         return new CommentDataService(repository, wrapper);
+    }
+
+    @Bean
+    public UserWebController userWebController(UserDomainService service, ArticleToDTOMappingWrapper articleMapper) {
+        return new UserWebController(service, articleMapper);
     }
 }
