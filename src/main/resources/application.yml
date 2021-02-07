@@ -2,9 +2,5 @@ spring:
   output:
     ansi:
       enabled: always
-  mvc:
-    view:
-      prefix: /WEB-INF/jsp/
-      suffix: .jsp
   profiles:
     active: "postgres"

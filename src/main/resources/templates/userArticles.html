@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Person articles Page</title>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
+    </head>
+    <body>
+        <h1>Articles list</h1>
+        <br/><br/>
+        <div>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td>Article name</td>
+                        <td>Author ID</td>
+                        <td>Article ID</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${articles.empty}">
+                        <td colspan="3"> No articles Available</td>
+                    </tr>
+                    <tr th:each="article : ${articles}">
+                        <td><span th:text = "${article.name}">Article Name</span></td>
+                        <td><span th:text = "${article.authorId}">Author ID</span></td>
+                        <td><span th:text = "${article.id}">Article ID</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
