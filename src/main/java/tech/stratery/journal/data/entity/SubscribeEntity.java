@@ -4,12 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import tech.stratery.framework.core.data.jpa.DomainJPAEntity;
-import tech.stratery.journal.business.domain.Article;
 import tech.stratery.journal.business.domain.Subscribe;
-import tech.stratery.journal.business.domain.User;
 
 import javax.persistence.*;
-import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -27,7 +24,7 @@ public class SubscribeEntity extends DomainJPAEntity<Subscribe, UUID> {
     private UUID blog;
 
     @Column(name = "user")
-    private User user;
+    private UUID user;
 
     @ManyToOne(targetEntity = TopicFlowEntity.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "blog_id", referencedColumnName = "id")

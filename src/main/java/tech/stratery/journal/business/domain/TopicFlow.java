@@ -9,5 +9,4 @@ import java.util.UUID;
 public class TopicFlow extends DomainObject<UUID> {
 
     private String name;
-    private User administrator;
 }

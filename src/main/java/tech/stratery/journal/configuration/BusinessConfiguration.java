@@ -63,8 +63,8 @@ public class BusinessConfiguration {
     }
 
     @Bean
-    public TopicFlowController topicFlowController(TopicFlowDomainService service, TopicFlowToDTOMappingWrapper mapping) {
-        return new TopicFlowController(service, mapping);
+    public TopicFlowController topicFlowController(TopicFlowDomainService service, TopicFlowToDTOMappingWrapper mapping, ArticleToDTOMappingWrapper articleMapping) {
+        return new TopicFlowController(service, mapping, articleMapping);
     }
 
     @Bean
@@ -73,8 +73,8 @@ public class BusinessConfiguration {
     }
 
     @Bean
-    public TopicFlowDataService topicFlowDataService(TopicFlowRepository repository, TopicFlowToEntityMappingWrapper mapper){
-        return new TopicFlowDataService(repository, mapper);
+    public TopicFlowDataService topicFlowDataService(TopicFlowRepository repository, TopicFlowToEntityMappingWrapper mapper, ArticleToEntityMappingWrapper articleMapping){
+        return new TopicFlowDataService(repository, mapper, articleMapping);
     }
 
     @Bean

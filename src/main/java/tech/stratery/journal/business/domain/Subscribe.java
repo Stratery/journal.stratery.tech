@@ -8,6 +8,4 @@ import java.util.UUID;
 @Data
 public class Subscribe extends DomainObject<UUID> {
 
-    private TopicFlow blog;
-    private User user;
 }
