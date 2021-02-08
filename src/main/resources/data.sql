@@ -1,15 +1,26 @@
+insert into blog_user (id, blocked, email, login, password, name) values ('a9215dd6-ff93-4518-97bd-9f9a1288e494', false, 'admin@BloG', 'admin', 'adminpassword', 'admin');
+insert into blog_user (id, blocked, email, login, password, name) values ('e146e11a-bc69-4b70-8c9f-7ecf78ef77ee', false, 'author@BloG', 'author', 'authorpassword', 'author');
+
 INSERT INTO TOPIC (id,name,description) VALUES ('ad720bb7-d9e9-4201-b4f5-06dcc5182131', 'Финансы', 'Совокупность экономических отношений, возникающих в процессе формирования, распределения, а также использования централизованных и децентрализованных фондов денежных средств. Говоря о финансах, чаще всего подразумевают целевые фонды государства, а также фирм (хозяйствующих субъектов)');
 INSERT INTO TOPIC (id,name,description) VALUES ('fd5d719b-ea9d-454e-b0d5-98ed8bc85bcd', 'Технологии', 'Процессы, методы поиска, сбора, хранения, обработки, предоставления, распространения информации и способы осуществления таких процессов и методов');
 INSERT INTO TOPIC (id,name,description) VALUES ('154ad3be-62af-4754-b837-3e0426ecd1d1', 'Медицина', 'Система научных знаний и практической деятельности, целями которой являются укрепление и сохранение здоровья, продление жизни, предупреждение и лечение болезней человека и животных (ветеринарная медицина), а также облегчения страданий от физических и психических недугов');
 
-INSERT INTO ARTICLE (id,name,description) VALUES ('6342761f-8fb7-480c-b8b9-137e5bec7f54', 'Кардиология', 'Лекарственно-индуцированный дефицит электролитов. Часть 2. Лекарственно-индуцированная гипомагниемия');
-INSERT INTO ARTICLE (id,name,description) VALUES ('34ad951c-a000-4630-8d11-65f341cb2132', 'Роль липопротеина', 'Клиническая и патофизиологическая роль липопротеина (а) в развитии атеросклероз-ассоциированных заболеваний');
-INSERT INTO ARTICLE (id,name,description) VALUES ('3b039c99-8413-4248-99be-b3575f6f0ba2', 'Онкология', 'Роль микроРНК при злокачественных новообразованиях органов брюшной полости с явлениями перитонеального канцероматоза');
-INSERT INTO ARTICLE (id,name,description) VALUES ('8290c869-a858-465e-8049-ded38103410d', 'Гипофосфатазия у детей. Три лица одной болезни', 'Гипофосфатазия (ГФФ) — это мультисистемное прогрессирующее наследственное метаболическое заболевание, зачастую приводящее к угрожающим жизни состояниям и инвалидизации пациентов');
-INSERT INTO ARTICLE (id,name,description) VALUES ('b496136f-400a-4bac-b810-3fcb96e89109', 'Хирургия', 'Клинико-патогенетическое обоснование противоспаечной терапии при аппендикулярно-генитальном синдроме у женщин репродуктивного возраста');
+INSERT INTO ARTICLE (id,name,description, author_id) VALUES ('6342761f-8fb7-480c-b8b9-137e5bec7f54', 'Кардиология', 'Лекарственно-индуцированный дефицит электролитов. Часть 2. Лекарственно-индуцированная гипомагниемия', 'e146e11a-bc69-4b70-8c9f-7ecf78ef77ee');
+INSERT INTO ARTICLE (id,name,description, author_id) VALUES ('34ad951c-a000-4630-8d11-65f341cb2132', 'Роль липопротеина', 'Клиническая и патофизиологическая роль липопротеина (а) в развитии атеросклероз-ассоциированных заболеваний', 'e146e11a-bc69-4b70-8c9f-7ecf78ef77ee');
+INSERT INTO ARTICLE (id,name,description, author_id) VALUES ('3b039c99-8413-4248-99be-b3575f6f0ba2', 'Онкология', 'Роль микроРНК при злокачественных новообразованиях органов брюшной полости с явлениями перитонеального канцероматоза', 'e146e11a-bc69-4b70-8c9f-7ecf78ef77ee');
+INSERT INTO ARTICLE (id,name,description, author_id) VALUES ('8290c869-a858-465e-8049-ded38103410d', 'Гипофосфатазия у детей. Три лица одной болезни', 'Гипофосфатазия (ГФФ) — это мультисистемное прогрессирующее наследственное метаболическое заболевание, зачастую приводящее к угрожающим жизни состояниям и инвалидизации пациентов', 'e146e11a-bc69-4b70-8c9f-7ecf78ef77ee');
+INSERT INTO ARTICLE (id,name,description, author_id) VALUES ('b496136f-400a-4bac-b810-3fcb96e89109', 'Хирургия', 'Клинико-патогенетическое обоснование противоспаечной терапии при аппендикулярно-генитальном синдроме у женщин репродуктивного возраста', 'e146e11a-bc69-4b70-8c9f-7ecf78ef77ee');
 
 INSERT INTO ARTICLE_TOPIC (topic_id, article_id) VALUES ('154ad3be-62af-4754-b837-3e0426ecd1d1', '6342761f-8fb7-480c-b8b9-137e5bec7f54');
 INSERT INTO ARTICLE_TOPIC (topic_id, article_id) VALUES ('154ad3be-62af-4754-b837-3e0426ecd1d1', '34ad951c-a000-4630-8d11-65f341cb2132');
 INSERT INTO ARTICLE_TOPIC (topic_id, article_id) VALUES ('154ad3be-62af-4754-b837-3e0426ecd1d1', '3b039c99-8413-4248-99be-b3575f6f0ba2');
 INSERT INTO ARTICLE_TOPIC (topic_id, article_id) VALUES ('154ad3be-62af-4754-b837-3e0426ecd1d1', '8290c869-a858-465e-8049-ded38103410d');
 INSERT INTO ARTICLE_TOPIC (topic_id, article_id) VALUES ('154ad3be-62af-4754-b837-3e0426ecd1d1', 'b496136f-400a-4bac-b810-3fcb96e89109');
+
+insert into COMMENTS (id, article_id, author_id, text) values ('496fcc84-6a17-11eb-9439-0242ac130002', '6342761f-8fb7-480c-b8b9-137e5bec7f54', 'a9215dd6-ff93-4518-97bd-9f9a1288e494', 'Очень важная тема');
+insert into COMMENTS (id, article_id, author_id, text) values ('ca917af6-6a17-11eb-9439-0242ac130002', '34ad951c-a000-4630-8d11-65f341cb2132', 'a9215dd6-ff93-4518-97bd-9f9a1288e494', 'Ну вообще спорные утверждения');
+insert into COMMENTS (id, article_id, author_id, text) values ('d08477a6-6a17-11eb-9439-0242ac130002', '34ad951c-a000-4630-8d11-65f341cb2132', 'a9215dd6-ff93-4518-97bd-9f9a1288e494', 'Я пожалуй подробнее перечитаю литературу на эту тему');
+insert into COMMENTS (id, article_id, author_id, text) values ('d7aafe88-6a17-11eb-9439-0242ac130002', 'b496136f-400a-4bac-b810-3fcb96e89109', 'a9215dd6-ff93-4518-97bd-9f9a1288e494', 'Хирурги рулят!');
+insert into COMMENTS (id, article_id, author_id, text) values ('dd6fe374-6a17-11eb-9439-0242ac130002', 'b496136f-400a-4bac-b810-3fcb96e89109', 'a9215dd6-ff93-4518-97bd-9f9a1288e494', 'Не читал но осуждаю....');
+insert into COMMENTS (id, article_id, author_id, text) values ('e2140d9c-6a17-11eb-9439-0242ac130002', 'b496136f-400a-4bac-b810-3fcb96e89109', 'a9215dd6-ff93-4518-97bd-9f9a1288e494', 'Я хирург в 15м поколении, 7 бед - в разрезе ответ');
+insert into COMMENTS (id, article_id, author_id, text) values ('e78b0d98-6a17-11eb-9439-0242ac130002', 'b496136f-400a-4bac-b810-3fcb96e89109', 'a9215dd6-ff93-4518-97bd-9f9a1288e494', 'Вжух, вжух, уноси готовенького....');

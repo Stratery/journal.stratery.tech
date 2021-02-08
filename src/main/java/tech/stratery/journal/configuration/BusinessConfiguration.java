@@ -44,7 +44,6 @@ import tech.stratery.framework.core.mapping.DomainModelMapper;
 @Configuration
 @EntityScan("tech.stratery.journal.data.entity")
 @EnableJpaRepositories("tech.stratery.journal.data.repository")
-@EnableWebMvc
 public class BusinessConfiguration {
 
     @Bean

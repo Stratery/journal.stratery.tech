@@ -16,7 +16,7 @@ import static java.lang.String.format;
 
 @Data
 @Accessors(chain = true)
-@EqualsAndHashCode(callSuper = true, exclude = "articles")
+@EqualsAndHashCode(callSuper = true)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class TopicDTO extends DataTransferObject<Topic, UUID> {
@@ -31,6 +31,7 @@ public class TopicDTO extends DataTransferObject<Topic, UUID> {
     private String description;
 
     // Статьи
+    @EqualsAndHashCode.Exclude
     private Set<ArticleDTO> articles;
 
     public String getSelfHref() {
