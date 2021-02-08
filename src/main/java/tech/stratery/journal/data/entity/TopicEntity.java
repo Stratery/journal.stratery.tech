@@ -23,15 +23,10 @@ public class TopicEntity extends DomainJPAEntity<Topic, UUID> {
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
-    @Column(name = "description", columnDefinition = "LONGTEXT")
+    @Column(name = "description")
+    @Lob
     private String description;
 
     @ManyToMany(targetEntity = ArticleEntity.class,fetch = FetchType.LAZY,mappedBy = "topics")
     private Set<ArticleEntity> articles;
-
-    public static void main(String[] args) {
-        System.out.println(UUID.randomUUID());
-        System.out.println(UUID.randomUUID());
-        System.out.println(UUID.randomUUID());
-    }
 }
