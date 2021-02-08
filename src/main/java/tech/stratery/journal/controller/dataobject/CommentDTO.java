@@ -18,6 +18,9 @@ public class CommentDTO extends DataTransferObject<Comment, UUID> {
     // статья
     private UUID articleId;
 
+    // Имя автора
+    private String authorName;
+
     // автор комментария
     private UUID authorId;
 

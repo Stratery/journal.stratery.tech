@@ -14,14 +14,16 @@ public interface CommentToDTOMapper extends DomainModelMapper<Comment, CommentDT
     @Override
     @Mappings({
             @Mapping(target="articleId", source = "comment.article.id"),
-            @Mapping(target="authorId", source = "comment.author.id")
+            @Mapping(target="authorId", source = "comment.author.id"),
+            @Mapping(target = "authorName", source = "comment.author.name")
     })
     CommentDTO forward(Comment comment, CyclicGraphContext context);
 
     @Override
     @Mappings({
             @Mapping(source = "commentDTO.articleId", target = "article.id"),
-            @Mapping(source = "commentDTO.authorId", target = "author.id")
+            @Mapping(source = "commentDTO.authorId", target = "author.id"),
+            @Mapping(source = "commentDTO.authorName", target = "author.name")
     })
     Comment back(CommentDTO commentDTO, CyclicGraphContext context);
 }

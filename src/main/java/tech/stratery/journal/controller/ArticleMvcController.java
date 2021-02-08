@@ -10,8 +10,10 @@ import tech.stratery.framework.core.logic.DomainService;
 import tech.stratery.framework.core.mapping.DomainModelMappingWrapper;
 import tech.stratery.journal.business.domain.Article;
 import tech.stratery.journal.business.domain.Topic;
+import tech.stratery.journal.business.service.ArticleDomainService;
 import tech.stratery.journal.controller.dataobject.ArticleDTO;
 import tech.stratery.journal.controller.dataobject.TopicDTO;
+import tech.stratery.journal.controller.mapping.ArticleToDTOMappingWrapper;
 import tech.stratery.journal.data.entity.ArticleEntity;
 import tech.stratery.journal.data.entity.TopicEntity;
 
@@ -22,7 +24,7 @@ import java.util.UUID;
 @RequestMapping("/mvc/article")
 public class ArticleMvcController extends CRUDController<Article, ArticleEntity, ArticleDTO, UUID> {
 
-    protected ArticleMvcController(DomainService<Article, ArticleEntity, UUID> service, DomainModelMappingWrapper<Article, ArticleDTO> mapping) {
+    protected ArticleMvcController(ArticleDomainService service, ArticleToDTOMappingWrapper mapping) {
         super(service, mapping);
     }
 
@@ -32,7 +34,7 @@ public class ArticleMvcController extends CRUDController<Article, ArticleEntity,
 
         model.addAttribute("header_title", dto.getName());
         model.addAttribute("header_text", dto.getDescription());
-        model.addAttribute("dies", dto.getComments());
+        model.addAttribute("comments", dto.getComments());
         return "jumbotron-dies-template";
     }
 }

@@ -33,9 +33,9 @@ public class ArticleDTO extends DataTransferObject<Article, UUID> {
     // Описание
     public String description;
 
-    //Топики
-    @EqualsAndHashCode.Exclude
-    private Set<TopicDTO> topics;
+//    //Топики
+//    @EqualsAndHashCode.Exclude
+//    private Set<TopicDTO> topics;
 
     //Комментарии
     @EqualsAndHashCode.Exclude

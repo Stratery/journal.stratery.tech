@@ -80,6 +80,13 @@
         </div>
     </div>
 
+    <div class="row">
+        <div th:each="comment : ${comments}">
+            <h2><b th:text="${comment.authorName}"></b></h2>
+            <p th:text="${comment.text}"></p>
+        </div>
+    </div>
+
 
     <hr>
     <footer>
