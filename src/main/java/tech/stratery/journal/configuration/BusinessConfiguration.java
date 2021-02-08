@@ -5,12 +5,13 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import tech.stratery.journal.business.domain.Article;
 import tech.stratery.journal.business.service.ArticleDomainService;
 import tech.stratery.journal.business.service.CommentDomainService;
 import tech.stratery.journal.business.service.UserDomainService;
 import tech.stratery.journal.controller.ArticleController;
+import tech.stratery.journal.controller.mapping.ArticleToDTOMapper;
+import tech.stratery.journal.controller.mapping.ArticleToDTOMappingWrapper;
+import tech.stratery.journal.controller.mapping.TopicToDTOMapper;
 import tech.stratery.journal.controller.CommentController;
 import tech.stratery.journal.controller.UserController;
 import tech.stratery.journal.controller.UserWebController;
@@ -21,6 +22,7 @@ import tech.stratery.journal.data.repository.ArticleRepository;
 import tech.stratery.journal.data.repository.CommentRepository;
 import tech.stratery.journal.data.repository.UserRepository;
 import tech.stratery.journal.data.service.ArticleDataService;
+import tech.stratery.journal.data.service.mapping.*;
 import tech.stratery.journal.data.service.CommentDataService;
 import tech.stratery.journal.data.service.UserDataService;
 import tech.stratery.journal.data.service.mapping.*;
@@ -29,7 +31,6 @@ import tech.stratery.framework.core.mapping.DomainModelMapper;
 @Configuration
 @EntityScan("tech.stratery.journal.data.entity")
 @EnableJpaRepositories("tech.stratery.journal.data.repository")
-@EnableWebMvc
 public class BusinessConfiguration {
 
     @Bean
@@ -100,4 +101,14 @@ public class BusinessConfiguration {
     public UserWebController userWebController(UserDomainService service, ArticleToDTOMappingWrapper articleMapper) {
         return new UserWebController(service, articleMapper);
     }
+    @Bean
+    public TopicToDTOMapper topicDTOMapper() {
+        return Mappers.getMapper(TopicToDTOMapper.class);
+    }
+
+    @Bean
+    public TopicToEntityMapper topicToEntityMapper() {
+        return new TopicToEntityMapperImpl();
+    }
+
 }

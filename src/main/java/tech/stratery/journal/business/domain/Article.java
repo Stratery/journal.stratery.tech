@@ -7,9 +7,15 @@ import java.util.Set;
 import java.util.UUID;
 
 @Data
+@EqualsAndHashCode(callSuper = true, exclude = "topics")
 public class Article extends DomainObject<UUID> {
 
     private String name;
     private Set<Comment> comments;
     private User author;
+
+    public String description;
+
+    private Set<Topic> topics;
+
 }
